@@ -1,11 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Grid } from 'semantic-ui-react'
+import { Card, Grid, Button,Icon } from 'semantic-ui-react'
+import {Link, NavLink} from "react-router-dom";
+
+const extra = (link, deleteLink) => {
+	return(
+		<div className="ui two buttons">
+			<Button animated='vertical' onClick={() => deleteLink(link._id)}>
+				<Button.Content hidden>Delete</Button.Content>
+				<Button.Content visible>
+					<Icon name='trash' />
+				</Button.Content>
+			</Button>
+		</div>
+	);
+};
 
 const ActorList = props => {
 	return (
 		<div>
-			<Grid stackable columns={3}>
+			<Grid stackable relaxed='very' columns={1}>
+				<Grid.Column verticalAlign='middle'>
+					<Button content='SUBMIT A LINK' icon='plus' size='big' as={NavLink} to="/links/new" />
+				</Grid.Column>
 				{
 					props.actors.map((actor, key) => (
 						<Grid.Column key={key}>
@@ -13,7 +30,7 @@ const ActorList = props => {
 								<Card
 									image={actor.photo}
 									header={ actor.name}
-									extra={actor.description}
+									extra={extra(actor, actor.deleteLink)}
 								/>
 							</Card>
 						</Grid.Column>

@@ -54,7 +54,6 @@ class HomePage extends Component {
 	render() {
 		return (
 			<div>
-				<h2>Actors & Actresses</h2>
 				<ActorList actors={this.state.actors}/>
 			</div>
 		);

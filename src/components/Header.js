@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {fixedMenuStyle, menuStyle} from "../helpers/styleHelper";
-import { Container, Visibility, Menu, Image } from 'semantic-ui-react';
+import { Container, Visibility, Menu } from 'semantic-ui-react';
 
 class Header extends Component {
 	state = {
@@ -23,21 +23,19 @@ class Header extends Component {
 					once={false}
 				>
 					<Menu
-						borderless
 						fixed={menuFixed && 'top'}
 						style={menuFixed ? fixedMenuStyle : menuStyle}
+						pointing secondary
 					>
 						<Container text>
 							<Menu.Item as={Link} to="/" exact="true">
-								<Image size='mini' src='https://react.semantic-ui.com/logo.png' />
-								<Menu.Item header>Movieapp</Menu.Item>
+								<Menu.Item header>hepsiburada.com</Menu.Item>
 							</Menu.Item>
-							<Menu.Item as={NavLink} to="/movies" exact>
-								Movies
+							<Menu.Menu position='right'>
+							<Menu.Item>
+								<Menu.Item header>LinkVOTE Challenge</Menu.Item>
 							</Menu.Item>
-							<Menu.Item  as={NavLink} to="/movies/new">
-								Add New
-							</Menu.Item>
+							</Menu.Menu>
 						</Container>
 					</Menu>
 				</Visibility>

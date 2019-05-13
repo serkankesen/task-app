@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import movies from './movies';
-import newMovie from './newMovie';
+import links from './links';
+import newLink from './newLink';
 
 export default combineReducers({
-	movies,
-	newMovie
+	links,
+	newLink
 })
