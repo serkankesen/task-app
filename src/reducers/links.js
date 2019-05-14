@@ -1,53 +1,26 @@
 import {
-	FETCH_LINKS_PENDING,
-	FETCH_LINKS_FULFILLED,
-	FETCH_LINKS_REJECTED,
-
-	DELETE_LINK_PENDING,
-	DELETE_LINK_FULFILLED,
-	DELETE_LINK_REJECTED
+	NEW_LINK,
+	UPDATE_LINK_VOTE
 } from '../actions/links';
+import { fromJS } from 'immutable';
 
 const initialState = {
-	fetching: false,
-	linkList: [],
-	error: {}
+	done: false,
+	error: {},
+	link: []
 };
 
 export default (state = initialState, action) => {
 	switch (action.type){
-		case FETCH_LINKS_PENDING:
+		case NEW_LINK:
+			return {
+				...state.link,
+				done: true
+			}
+		case UPDATE_LINK_VOTE:
 			return {
 				...state,
-				fetching: true
-			};
-		case FETCH_LINKS_FULFILLED:
-			return {
-				...state,
-				linkList: action.payload,
-				fetching: false
-			};
-		case FETCH_LINKS_REJECTED:
-			return {
-				...state,
-				error: action.payload,
-				fetching: false
-			};
-
-		// DELETE_LINK
-		case DELETE_LINK_PENDING:
-			return {
-				...state,
-			};
-		case DELETE_LINK_FULFILLED:
-			return {
-				...state,
-				linkList: state.linkList.filter(item => item._id !== action.payload.id),
-			};
-		case DELETE_LINK_REJECTED:
-			return {
-				...state,
-				error: action.payload,
+				done: true
 			};
 		default:
 			return state;

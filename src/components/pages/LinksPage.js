@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {
-	fetchLinks,
-	deleteLink
-} from '../../actions/links';
+// import {
+// 	fetchLinks,
+// 	deleteLink
+// } from '../../actions/links';
 import LinksList from '../LinksList';
 
 class LinksPage extends Component {
@@ -22,9 +22,9 @@ class LinksPage extends Component {
 		return (
 			<div>
 				<h2>Links</h2>
-				<LinksList
+				{/* <LinksList
 					deleteLink={this.props.deleteLink}
-					links={this.props.links} />
+					links={this.props.links} /> */}
 			</div>
 		);
 	}
@@ -37,8 +37,8 @@ const mapStateToProps = ({ links }) => {
 };
 
 const mapDispatchToProps = {
-	fetchLinks,
-	deleteLink
+	// fetchLinks,
+	// deleteLink
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(LinksPage);
