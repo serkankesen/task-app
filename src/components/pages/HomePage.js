@@ -1,48 +1,34 @@
-import React, {Component} from 'react';
-import LinkList  from '../LinkList';
+import React, { Component } from "react";
+import LinkList from "../LinkList";
+import { connect } from "react-redux";
+import { onUpdateLinkSubmit, onRemoveLinkSubmit } from "../../actions/links";
 
 class HomePage extends Component {
-	state = {
-		links: [
-			{
-				name: "HepsiBurada",
-				url: "https://hepsiburada.com",
-				vote:2
-			},
-			{
-				name: "Google",
-				url: "https://www.google.com",
-				vote:3
-			},
-			{
-				name: "Amazon",
-				url: "https://amazon.com",
-				vote:4
-			},
-			{
-				name: "Facebook",
-				url: "https://facebook.com",
-				vote:0
-			},
-			{
-				name: "Twitter",
-				url: "https://twitter.com",
-				vote:0
-			},
-			{
-				name: "Serkan Kesen",
-				url: "https://serkankesen.com",
-				vote:0
-			}
-		]
-	};
-	render() {
-		return (
-			<div>
-				<LinkList links={this.state.links}/>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <LinkList
+          links={this.props.links}
+          onUpdateLinkSubmit={this.props.onUpdateLinkSubmit}
+          onRemoveLinkSubmit={this.props.onRemoveLinkSubmit}
+        />
+      </div>
+    );
+  }
 }
 
-export default HomePage;
+const mapStateToProps = ({ links }, props) => {
+  return {
+    links: links.link
+  };
+};
+
+const mapDispatchToProps = {
+  onUpdateLinkSubmit,
+  onRemoveLinkSubmit
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePage);
