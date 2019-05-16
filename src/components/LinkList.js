@@ -12,6 +12,7 @@ import {
 } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import _ from "lodash";
+import { headerStyle } from "../helpers/styleHelper";
 
 class LinkList extends Component {
   state = {
@@ -76,10 +77,10 @@ class LinkList extends Component {
             <Grid.Column key={key}>
               <Card fluid>
                 <Card.Content>
-                  <Card.Header>
+                  <Card.Header style={headerStyle}>
                     {link.vote} {link.vote > 1 ? "POINTS" : "POINT"}
                   </Card.Header>
-                  <Card.Meta>{link.name}</Card.Meta>
+                  <Card.Header>{link.name}</Card.Header>
                   <Card.Description>
                     {"("}
                     {link.url}
@@ -94,7 +95,7 @@ class LinkList extends Component {
                       onClick={() => this.props.onUpdateLinkSubmit(link, 5)}
                     >
                       <Icon name="arrow up" />
-                      Up Vote
+                      <b>Up Vote</b>
                     </Button>
 
                     <Button
@@ -103,7 +104,7 @@ class LinkList extends Component {
                       onClick={() => this.props.onUpdateLinkSubmit(link, -5)}
                     >
                       <Icon name="arrow down" />
-                      Down Vote
+                      <b>Down Vote</b>
                     </Button>
                     <Button
                       animated="vertical"
