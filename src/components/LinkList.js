@@ -72,8 +72,7 @@ class LinkList extends Component {
             }),
             4,
             activePage
-          )
-          .map((link, key) => (
+          ).map((link, key) => (
             <Grid.Column key={key}>
               <Card fluid>
                 <Card.Content>
